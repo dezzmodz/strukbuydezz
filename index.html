@@ -231,26 +231,26 @@ function tanggal(){
 return new Date().toLocaleString("id-ID");
 }
 
-/* ===== ORDER AUTO 1-1000 ===== */
+/* ===== ORDER ID 4 DIGIT PRO ===== */
 function orderID(){
 
-let nomor = localStorage.getItem("ORDER_NO") || 0;
+let nomor = parseInt(localStorage.getItem("ORDER_NO") || "0");
 nomor++;
 
-if(nomor > 1000000000) nomor = 1;
+if(nomor > 1000000) nomor = 1;
 
 localStorage.setItem("ORDER_NO", nomor);
 
 /* huruf random */
-const huruf = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-const randomHuruf =
-    huruf[Math.floor(Math.random()*huruf.length)] +
-    huruf[Math.floor(Math.random()*huruf.length)] +
-    huruf[Math.floor(Math.random()*huruf.length)] +
-    huruf[Math.floor(Math.random()*huruf.length)];
+const huruf = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const rand = () => huruf[Math.floor(Math.random()*huruf.length)];
 
 
-return `${randomHuruf}${nomor}-${nomor}${nomor}-${randomHuruf}`;
+/* format 4 digit */
+const angka = String(nomor).padStart(4,"0");
+
+/* hasil */
+return `${rand()}${angka}${rand()}${rand()}`;
 }
 
 /* ===== BUAT STRUK ===== */
