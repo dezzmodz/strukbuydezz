@@ -2,391 +2,203 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>STRUK STORE PRO</title>
+<title>Telegram Text Cleaner</title>
 
 <style>
+
 body{
-/* ===== BODY ESTETIK ===== */
-    margin:0;
-    font-family:'Segoe UI',Arial,sans-serif;
-    background:
-        radial-gradient(circle at top,#020617,#000814 70%);
-    color:#fff;
-    display:flex;
-    justify-content:center;
-    padding:20px;
+font-family:Arial;
+background:#0f172a;
+color:white;
+padding:20px;
 }
 
-/* ===== CONTAINER ===== */
-.box{
-    width:100%;
-    max-width:900px;
-    height:90vh;          /* tinggi layar */
-    overflow-y:auto;      /* scroll atas bawah */
-    
-    background:rgba(15,23,42,0.75);
-    backdrop-filter:blur(14px);
-    padding:25px;
-    border-radius:18px;
-    border:1px solid rgba(0,255,224,0.2);
-
-    box-shadow:
-        0 0 25px rgba(0,255,224,0.25),
-        inset 0 0 20px rgba(0,255,224,0.05);
-
-    animation:fadeIn .2s ease;
-}
-/* SCROLLBAR NEON */
-.box::-webkit-scrollbar{
-    width:6px;
-}
-
-.box::-webkit-scrollbar-track{
-    background:#020617;
-}
-
-.box::-webkit-scrollbar-thumb{
-    background:#00ffe0;
-    border-radius:10px;
-}
-
-/* ===== TITLE ===== */
 h2{
-    text-align:center;
-    color:#00ffe0;
-    letter-spacing:2px;
-    text-shadow:0 0 12px #00ffe0;
+text-align:center;
+color:#22c55e;
 }
 
-/* ===== INPUT ===== */
-input,select{
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border-radius:10px;
-    border:none;
-    outline:none;
-    background:#020617;
-    color:white;
-    transition:.25s;
-    box-shadow:inset 0 0 6px rgba(0,255,224,0.2);
+textarea{
+width:100%;
+height:500px;
+padding:10px;
+border-radius:8px;
+border:none;
+margin-top:10px;
+background:#020617;
+color:white;
 }
 
-input:focus,select:focus{
-    box-shadow:0 0 10px #00ffe0;
-    transform:scale(1.01);
-}
-
-/* ===== BUTTON ===== */
 button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
-    margin-top:8px;
-    transition:.25s;
-    letter-spacing:1px;
+padding:10px;
+margin-top:10px;
+margin-right:5px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
 }
 
-/* BUTTON COLORS */
-.buat{
-    background:linear-gradient(45deg,#22c55e,#4ade80);
-    color:black;
-}
-.wa{
-    background:linear-gradient(45deg,#25D366,#16a34a);
-}
-.tele{
-    background:linear-gradient(45deg,#229ED9,#0ea5e9);
-}
-.export{
-    background:linear-gradient(45deg,#3b82f6,#60a5fa);
-}
-.copy{
-    background:linear-gradient(45deg,#f59e0b,#fbbf24);
-    color:black;
+.copy{background:#22c55e;color:black;}
+.clear{background:#ef4444;color:white;}
+
+.info{
+margin-top:10px;
+color:#22c55e;
 }
 
-/* HOVER EFFECT */
-button:hover{
-    transform:translateY(-2px) scale(1.02);
-    box-shadow:0 0 15px rgba(0,255,224,0.4);
-}
-
-/* ===== RECEIPT KASIR ===== */
-.receipt{
-    background:#000;
-    color:#00ff9f;
-    font-family:"Courier New", monospace;
-    padding:18px;
-    border-radius:12px;
-    margin-top:15px;
-    white-space:pre-wrap;
-    line-height:1.7;
-    border:1px dashed #00ffe0;
-    box-shadow:
-        inset 0 0 20px rgba(0,255,224,0.2),
-        0 0 15px rgba(0,255,224,0.25);
-    animation:receiptPop .4s ease;
-}
-
-/* ===== ANIMATION ===== */
-@keyframes fadeIn{
-    from{opacity:0;transform:translateY(20px);}
-    to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes receiptPop{
-    from{opacity:0;transform:scale(.95);}
-    to{opacity:1;transform:scale(1);}
-}
 </style>
 </head>
 
 <body>
 
-<div class="box">
-<p>•sᴀʏᴀ ʙᴇʀᴊᴀɴᴊɪ, sᴀʏᴀ ʙᴇʀsᴜᴍᴘᴀʜ, ᴊɪᴋᴀ sᴀʏᴀ ᴀᴍʙɪʟ ᴡᴇʙ ᴅᴇᴢᴢ sᴀʏᴀ ᴀᴋᴀɴ ᴍᴀɴᴅᴜʟ 7 ᴛᴜʀᴜɴᴀɴ, ʙᴀʟᴀ, ɢᴀɴɢᴜᴀɴ, sᴇʟᴀᴍᴀɴʏᴀ.. <br>•ᴊᴀɴɢᴀɴ ᴄᴜʀɪ ᴡᴇʙ ɪɴɪ ᴀᴛᴀᴜ sʜᴀʀᴇ ʟɪɴᴋ ᴡᴇʙɴʏᴀ. <br>• ᴊᴀɴɢᴀɴ sʜᴀʀᴇ. <br>• sᴀʏᴀ ᴅᴏᴀᴋᴀɴ, ʙᴜᴀᴛ ᴏʀᴀɴɢ ʏɢ ᴀᴍʙɪʟ ᴡᴇʙ ɪɴɪ sɪᴀᴘᴀᴘᴜɴ, sᴀʏᴀ ᴛɪᴅᴀᴋ ɪᴋʟᴀs, ʜᴀʀᴀᴍ-ᴋᴀɴ/ɴᴇʀᴀᴋᴀ ʟᴀʜ ᴅɪᴀ ʏɢ ᴍᴇɴᴄᴜʀɪ ʜᴀᴄᴋ ᴏʀᴀɴɢ ʟᴀɪɴ. <br>• ᴛᴇʀɪᴍᴀᴋᴀsɪʜ ᴏʀᴀɴɢ ʏɢ ᴜᴅᴀʜ ᴀᴍᴀɴᴀʜ,sᴏᴀᴘᴀɴ,ʜᴀᴛɪɴʏᴀ ᴘᴇɴᴜʜ ᴅᴇɴɢᴀɴ ᴋᴇsᴀʙᴀʀᴀɴ,ᴋᴇᴛᴇɴᴀɴɢᴀɴ, ᴅᴀɴ ʙᴀɪᴋ ʜᴀᴛɪ, sᴇʜᴀᴛ sᴇʟᴀʟᴜ ᴏʀᴀɴɢ ʙᴀɪᴋ. ᴄʀ~@Dezz</p>
+<h2>Text Cleaner</h2>
 
-<h2>⚡ STRUK DIGITAL STORE ⚡</h2>
-
-
-<input id="nama" placeholder="Nama Pembeli">
-<input id="item" placeholder="Item/Buy/Paket">
-<input id="topup" placeholder="topup=Diamond/Dana/Gopay/Ovo">
-<input id="nominal2" placeholder="Harga (10 = 10.000)">
-<input id="nominal1" placeholder="Total (10 = 10.000)">
-<input id="LinkFile" placeholder="link file">
-<input id="Pass" placeholder="Pass">
-
-<p>Admin<p>
-<select id="admin">
-<option>DezZ</option>
-<option>AFIFSTORE</option>
-</select>
-
-<p>PILIH APP<p>
-<select id="game">
-<option>Free Fire</option>
-<option>ML</option>
-<option>PUBG</option>
-<option>Google</option>
-<option>Crome</option>
-<option>Browser</option>
-<option>More</option>
-<option>Whatsapp</option>
-<option>You Tobe</option>
-<option>Telegram</option>
-<option>Tik Tok</option>
-<option>Instagram</option>
-<option>Facebook</option>
-<option>-</option>
-</select>
+<textarea id="textInput" placeholder="Tempel teks di sini..."></textarea>
+<div class="info" id="counter">Karakter: 0 | Baris: 0</div>
+<br>
 
 
-<p>PILIH PRODUK<p>
-<select id="produk">
-<option>File Free Fire</option>
-<option>APK BAN WA</option>
-<option>-</option>
-<option>MURBUG VIP</option>
-<option>MURBAN VIP</option>
-<option>JASA UNBAN</option>
-<option>More</option>
-</select>
+<button class="copy" onclick="copyText()">SALIN</button>
+<button class="clear" onclick="clearText()">HAPUS</button>
+<label style="display:flex;align-items:center;margin-top:10px;gap:8px;">
+  <input type="checkbox" id="useMasslink" checked>
+  Pakai /masslink
+</label>
 
-
-<p>PILIH Free/Buy<p>
-<select id="freebuy">
-<option>Buy</option>
-<option>Free</option>
-</select>
-
-<p>PILIH STATUS<p>
-<select id="status">
-<option>SUCCESS  ☑</option>
-<option>DONE  ☑</option>
-<option>FAILED</option>
-<option>Belum Dibayar</option>
-<option>Sudah Dibayar  ☑</option>
-<option>More</option>
-<option>-</option>
-</select>
-
-
-<p>PILIH Payment<p>
-<select id="payment">
-<option value="">Pilih Payment</option>
-<option>DANA</option>
-<option>OVO</option>
-<option>GOPAY</option>
-<option>QRIS</option>
-<option>Bank Transfer</option>
-<option>Metode Uang</option>
-<option>-</option>
-</select>
-
-<button class="buat" onclick="buatStruk()">BUAT STRUK</button>
-
-<div id="hasil" class="receipt">
-STRUK AKAN MUNCUL DI SINI
-</div>
-
-<button class="copy" onclick="copyStruk()">COPY STRUK</button>
-<button class="wa" onclick="kirimWA()">Kirim WhatsApp</button>
-<button class="tele" onclick="kirimTele()">Kirim Telegram</button>
-<button class="export" onclick="exportTXT()">Export TXT</button>
-
-</div>
+<div class="info" id="status"></div>
 
 <script>
 
-/* ===== FORMAT RUPIAH ===== */
-function rupiah(n){
-let total = Number(n||0)*1000;
-return "Rp "+total.toLocaleString("id-ID");
+function cleanText(text){
+
+  const urlRegex = /([^\s]*https?:\/\/[^\s]+)/g;
+
+  let parts = text.split(urlRegex);
+  let result = "";
+
+  for(let i=0;i<parts.length;i++){
+
+    // 🔥 pakai test biar aman
+    if(urlRegex.test(parts[i])){
+
+      let cleanURL = parts[i]
+        .replace(/.*?(https?:\/\/)/, "$1")
+        .replace(/[\u{1F000}-\u{1FFFF}]/gu, "")
+        .replace(/[+\-_*~`]+$/g, "");
+
+      result += cleanURL;
+
+    } else {
+
+      // teks biasa tetap masuk
+      result += parts[i].replace(/[+\*>'`_~#]/g,"");
+
+  }
+
+  } // ✅ INI YANG KURANG TADI
+
+  return result;
 }
 
-/* ===== TANGGAL ===== */
-function tanggal(){
-return new Date().toLocaleString("id-ID");
-}
-
-/* ===== ORDER ID 4 DIGIT PRO ===== */
-function orderID(){
-
-let nomor = parseInt(localStorage.getItem("ORDER_NO") || "0");
-nomor++;
-
-if(nomor > 1000000) nomor = 1;
-
-localStorage.setItem("ORDER_NO", nomor);
-
-/* huruf random */
-const huruf = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const rand = () => huruf[Math.floor(Math.random()*huruf.length)];
-
-
-/* format 4 digit */
-const angka = String(nomor).padStart(4,"0");
-
-/* hasil */
-return `${rand()}${angka}${rand()}${rand()}`;
-}
-
-/* ===== BUAT STRUK ===== */
-function buatStruk(){
-
-const nama=document.getElementById("nama").value.trim();
-const LinkFile=document.getElementById("LinkFile").value.trim();
-const Pass=document.getElementById("Pass").value.trim();
-const game=document.getElementById("game").value;
-const item=document.getElementById("item").value.trim();
-const freebuy=document.getElementById("freebuy").value.trim();
-const status=document.getElementById("status").value;
-const admin=document.getElementById("admin").value;
-const nominal1=document.getElementById("nominal1").value;
-const nominal2=document.getElementById("nominal2").value;
-const topup=document.getElementById("topup").value;
-const payment=document.getElementById("payment").value;
-const produk=document.getElementById("produk").value;
-
-if(!nama||!item){
-alert("⚠️ Lengkapi data dulu!");
-return;
-}
-
-const total=rupiah(nominal1);
-const harga=rupiah(nominal2);
-
-/* ===== TEMPLATE DEZZ ===== */
-let footerStore = `
-✨ Terima kasih telah berbelanja di DEZZ STORE ✨
-Simpan struk ini sebagai bukti transaksi resmi.
-
-Semoga harimu menyenangkan 🚀
-Kami tunggu order berikutnya 🙏
-
-        — DEZZ STORE OFFICIAL —
-`;
-
-/* ===== TEMPLATE AFIF ===== */
-if(admin === "AFIFSTORE"){
-footerStore = `
-✨ Terima kasih telah berbelanja di AFIF STORE ✨
-Simpan struk ini sebagai bukti transaksi resmi.
-
-Kami tunggu order berikutnya 🙏
-
-        — AFIF STORE OFFICIAL —
-`;
-}
-
-const struk=
-`  ㅤㅤ ㅤㅤ𝐒𝐄𝐓𝐑𝐔𝐊 𝐏𝐄𝐌𝐁𝐄𝐋𝐈𝐀𝐍 
-======================================
-𝙽𝚘 𝙾𝚛𝚍𝚎𝚛 : ${orderID()}
-𝚃𝚊𝚗𝚐𝚐𝚊𝚕  : ${tanggal()}
-𝙰𝙳𝙼𝙸𝙽 : ${admin} 
--------------------------------------------------
-▪ 𝙽𝚊𝚖𝚎     : ${nama}
-▪ 𝙰𝚙𝚙       : ${game}
-▸ 𝙸𝚝𝚎𝚖   : ${item} 
-▸ 𝙿𝚛𝚘𝚍𝚞𝚔 : ${produk}
-▸ 𝚃𝚘𝚙 𝚄𝚙  : ${topup}
-▪ 𝙷𝚊𝚛𝚐𝚊   : ${harga}
-▪ 𝙵𝚛𝚎𝚎/𝙱𝚞𝚢 : ${freebuy} 
-▸ 𝙼𝚎𝚝𝚘𝚍𝚎 : ${payment}
----------------------------------------------------
-𝚃𝙾𝚃𝙰𝙻    : ${total} ☑
-======================================
-𝚂𝚃𝙰𝚃𝚄𝚂  : ${status}
-======================================
-𝙻𝚒𝚗𝚔 𝙵𝚒𝚕𝚎 : ${LinkFile}
-⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊
-𝙿𝚊𝚜𝚜𝚠𝚘𝚛𝚍/𝙺𝚎𝚢 : ${Pass} 
-⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊
-${footerStore}
-`;
-
-document.getElementById("hasil").innerHTML=struk;
-
-}
+/* ===== CLEAR ===== */  
+function clearText(){  
+  
+document.getElementById("textInput").value = "";  
+document.getElementById("status").innerText="Teks dihapus.";  
+  
+}  
 
 /* ===== COPY ===== */
-function copyStruk(){
-const text=document.getElementById("hasil").innerText;
-navigator.clipboard.writeText(text);
-alert("✅ Struk berhasil di copy");
+function copyText(){
+
+const textarea = document.getElementById("textInput");
+let nowFull = getDateNow();
+let now = Now131();
+
+/* JUDUL ATAS */
+let useMass = document.getElementById("useMasslink").checked;
+
+let judul =
+(useMass ? "/masslink  \n" : "") +
+Now131() + "\n\n" +
+"🚀 𝙅𝙊𝙄𝙉 𝘾𝙃𝘼𝙉𝙉𝙀𝙇 𝙊𝙁𝘾 🚀\n" +
+"📡 t.me/+GiwJdsTtYP0xNzU1\n" +
+"💬 whatsapp.com/channel/0029Vb7aIVe2UPBK5qaTPP1V\n" +
+"\n" +
+"⬇️ 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿 ⬇️\n\n"
+
+/* TXT BAWAH */
+let tambahan =
+"\n\n" +
+"📌 𝘾𝘼𝙍𝘼 𝙈𝙀𝙇𝙀𝙒𝘼𝙏𝙄 𝙇𝙄𝙉𝙆\n" +
+"🎬 youtube.com/shorts/vyLfHIKgGCI?si=SN8ypUS-QTva1HJx\n" +
+"⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊\n" +
+"📁 𝐀𝐋𝐋 𝐀𝐏𝐊 (𝐕𝐏𝐍, 𝐒𝐇𝐔𝐙𝐔𝐊𝐔, 𝐌𝐓, 𝐀𝐧𝐝 𝐦𝐨𝐫𝐞) \n" +
+"🧾 sociabuzz.com/dezzreal \n" +
+"⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊\n\n" + 
+getDateNow() + "\n\n" +
+"BUKAN ❤️‍🩹 PUNYA 🤝 @dezzreal1\n" +
+"\n" + // pake tanda >`A` biar bisa di salin otomatis
+"📌 𝙉𝙊𝙏𝙀:\n" +
+"📥 DOWNLOAD NOW\n" +
+"⚠️ Yakin ga download? nanti pas butuh malah ilang, Apa lagi kalo banyak yg jual, gimana.😅\n" +
+"☕ Kata Saya Ayo mending Download dulu dari pada hilang, kalo hilang kan nyarinya susah, ribet wkwkwk. 😵‍💫\n"
+
+/* HASIL FINAL */
+let finalText = judul + cleanText(textarea.value) + tambahan;
+
+textarea.value = finalText;
+
+textarea.select();
+textarea.setSelectionRange(0,99999);
+
+document.execCommand("copy");
+
+document.getElementById("status").innerText="Teks berhasil disalin!";
+
 }
 
-/* ===== WHATSAPP ===== */
-function kirimWA(){
-const text=encodeURIComponent(
-document.getElementById("hasil").innerText
-);
-window.open("https://wa.me/?text="+text);
+/* ===== COUNT TEXT ===== */
+const textarea = document.getElementById("textInput");
+const counter = document.getElementById("counter");
+
+textarea.addEventListener("input", updateCounter);
+
+function updateCounter(){
+
+let text = textarea.value;
+let chars = text.length;
+let lines = text.split("\n").length;
+
+counter.innerText = "Karakter: " + chars + " | Baris: " + lines;
+
 }
 
-/* ===== TELEGRAM ===== */
-function kirimTele(){
-const text=encodeURIComponent(
-document.getElementById("hasil").innerText
-);
-window.open("https://t.me/share/url?text="+text);
+function getDateNow(){
+  let d = new Date();
+
+  let tahun = d.getFullYear();
+  let bulan = String(d.getMonth()+1).padStart(2,'0');
+  let tanggal = String(d.getDate()).padStart(2,'0');
+  let jam = String(d.getHours()).padStart(2,'0');
+  let menit = String(d.getMinutes()).padStart(2,'0');
+  let detik = String(d.getSeconds()).padStart(2,'0');
+
+  return `📅 Date: ${tahun}-${bulan}-${tanggal} ⏰ ${jam}:${menit}:${detik}`;
 }
 
-/* ===== EXPORT TXT ===== */
-function exportTXT(){
-const isi=document.getElementById("hasil").innerText;
-const blob=new Blob([isi],{type:"text/plain"});
-const a=document.createElement("a");
-a.href=URL.createObjectURL(blob);
-a.download="struk.txt";
-a.click();
+
+function Now131(){
+  let d = new Date();
+
+  let tahun = d.getFullYear();
+  let bulan = String(d.getMonth()+1).padStart(2,'0');
+  let tanggal = String(d.getDate()).padStart(2,'0');
+let jam = String(d.getHours()).padStart(2,'0');
+  let menit = String(d.getMinutes()).padStart(2,'0');
+  
+  return `🪪 NEW UPDATE: 🔖 ${jam}:${menit}  📅 ${tanggal}/${bulan}/${tahun}`;
 }
 
 </script>
