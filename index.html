@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Text Cleaner Pro</title>
 
 <style>
@@ -15,21 +16,18 @@ body{
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #020617, #0f172a);
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  padding: 10px;
 }
 
 /* CARD */
 .container{
   width: 100%;
   max-width: 850px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(12px);
+  margin: auto;
+  padding: 15px;
   border-radius: 20px;
-  padding: 10px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
 }
 
 /* TITLE */
@@ -42,12 +40,17 @@ h2{
 /* TEXTAREA */
 textarea{
   width: 100%;
-  height: 1000px;
-  padding: 14px;
+  min-height: 250px;
+  height: 50vh;
+  max-height: 70vh;
+
+  padding: 12px;
   border-radius: 12px;
   border: none;
+
   background: rgba(0,0,0,0.6);
-  color: cyan;
+  color: #e2e8f0;
+
   outline: none;
   resize: none;
 }
@@ -66,34 +69,42 @@ textarea:focus{
 /* BUTTON GROUP */
 .buttons{
   display: flex;
-  gap: 10px;
+  gap: 8px;
+  flex-wrap: wrap;
   margin-top: 15px;
 }
 
 /* BUTTON */
 button{
-  flex: 1;
+  flex: 1 1 30%;
+  min-width: 90px;
+
   padding: 10px;
   border-radius: 10px;
   border: 2px solid rgba(255,255,255,0.2);
+
   cursor: pointer;
   font-weight: bold;
+
   position: relative;
   overflow: hidden;
-  transition: all 0.2s ease;
+
+  transition: transform 0.1s ease, box-shadow 0.2s;
 }
 
+/* tekan */
 button:active{
   transform: scale(0.95);
 }
 
 /* ripple */
-button span.ripple{
+button .ripple{
   position: absolute;
   border-radius: 50%;
   transform: scale(0);
   animation: ripple 0.5s linear;
-  background: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.4);
+  pointer-events: none;
 }
 
 @keyframes ripple{
@@ -103,22 +114,26 @@ button span.ripple{
   }
 }
 
+button:hover{
+  box-shadow: 0 0 10px rgba(255,255,255,0.15);
+}
+
 /* COLORS */
 .copy{
   background: linear-gradient(45deg,#22c55e,#4ade80);
-  color: blue;
+  color: #022c22;
   border-color: #22c55e;
 }
 
 .clear{
   background: linear-gradient(45deg,#ef4444,#f87171);
-  color: pink;
+  color: white;
   border-color: #ef4444;
 }
 
 .reset{
   background: linear-gradient(45deg,#facc15,#fde047);
-  color: cyan;
+  color: #3f2f00;
   border-color: #facc15;
 }
 
@@ -134,6 +149,13 @@ button span.ripple{
   margin-top: 10px;
   font-size: 13px;
   color: #38bdf8;
+}
+
+/* MOBILE */
+@media (max-width:600px){
+  h2{font-size:18px;}
+  textarea{height:45vh;font-size:13px;}
+  button{font-size:12px;padding:8px;}
 }
 </style>
 </head>
@@ -202,10 +224,10 @@ function cleanText(text){
 
 /* ===== CLEAR ===== */  
 function clearText(){  
-  
+
 document.getElementById("textInput").value = "";  
 document.getElementById("status").innerText="Teks dihapus.";  
-  
+
 }  
 
 /* ===== COPY ===== */
