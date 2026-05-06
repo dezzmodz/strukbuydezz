@@ -2,71 +2,170 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Clear Text</title>
+<title>Text Cleaner Pro</title>
 
 <style>
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body{
-font-family:Arial;
-background:#0f172a;
-color:white;
-padding:20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
+/* CARD */
+.container{
+  width: 100%;
+  max-width: 850px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* TITLE */
 h2{
-text-align:center;
-color:#22c55e;
+  text-align: center;
+  color: #22c55e;
+  margin-bottom: 15px;
 }
 
+/* TEXTAREA */
 textarea{
-width:100%;
-height:500px;
-padding:10px;
-border-radius:8px;
-border:none;
-margin-top:10px;
-background:#020617;
-color:white;
+  width: 100%;
+  height: 450px;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: cyan;
+  outline: none;
+  resize: none;
 }
 
-button{
-padding:10px;
-margin-top:10px;
-margin-right:5px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-font-weight:bold;
+textarea:focus{
+  box-shadow: 0 0 0 2px #22c55e;
 }
 
-.copy{background:#22c55e;color:black;}
-.clear{background:#ef4444;color:white;}
-
+/* INFO */
 .info{
-margin-top:10px;
-color:#22c55e;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #94a3b8;
 }
 
+/* BUTTON GROUP */
+.buttons{
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* BUTTON */
+button{
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+button:active{
+  transform: scale(0.95);
+}
+
+/* ripple */
+button span.ripple{
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 0.5s linear;
+  background: rgba(255,255,255,0.5);
+}
+
+@keyframes ripple{
+  to{
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* COLORS */
+.copy{
+  background: linear-gradient(45deg,#22c55e,#4ade80);
+  color: blue;
+  border-color: #22c55e;
+}
+
+.clear{
+  background: linear-gradient(45deg,#ef4444,#f87171);
+  color: pink;
+  border-color: #ef4444;
+}
+
+.reset{
+  background: linear-gradient(45deg,#facc15,#fde047);
+  color: cyan;
+  border-color: #facc15;
+}
+
+/* CHECKBOX */
+.checkbox{
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+/* STATUS */
+.status{
+  margin-top: 10px;
+  font-size: 13px;
+  color: #38bdf8;
+}
 </style>
 </head>
 
 <body>
 
-<h2>Text Cleaner</h2>
+<div class="container">
 
-<textarea id="textInput" placeholder="Tempel teks di sini..."></textarea>
-<div class="info" id="counter">Karakter: 0 | Baris: 0</div>
-<br>
+  <h2>🚀 Text Cleaner Pro</h2>
 
+  <textarea id="textInput" placeholder="🚀 𝙅𝙊𝙄𝙉 𝘾𝙃𝘼𝙉𝙉𝙀𝙇 𝙊𝙁𝘾 🚀
+𝙏𝙀𝙇𝙀 t.me/+GiwJdsTtYP0xNzU1
+𝙎𝙇 whatsapp.com/channel/0029Vb7aIVe2UPBK5qaTPP1V
+𝙂𝘽 chat.whatsapp.com/IHd3froa7XF1jWkYGqS54w?mode=gi_t"></textarea>
 
-<button class="copy" onclick="copyText()">SALIN</button>
-<button class="clear" onclick="clearText()">HAPUS</button>
-<label style="display:flex;align-items:center;margin-top:10px;gap:8px;">
-  <input type="checkbox" id="useMasslink" checked>
-  Pakai /masslink
-</label>
+  <div class="info" id="counter">
+    Karakter: 0 | Baris: 0
+  </div>
 
-<div class="info" id="status"></div>
+  <div class="buttons">
+    <button class="copy" onclick="copyText()">SALIN</button>
+    <button class="clear" onclick="clearText()">HAPUS</button>
+    <button class="reset" onclick="resetCounter()">RESET</button>
+  </div>
+
+  <label class="checkbox">
+    <input type="checkbox" id="useMasslink" checked>
+    Pakai /masslink
+  </label>
+
+  <div class="status" id="status"></div>
+
 
 <script>
 
@@ -112,51 +211,47 @@ document.getElementById("status").innerText="Teks dihapus.";
 /* ===== COPY ===== */
 function copyText(){
 
-const textarea = document.getElementById("textInput");
-let nowFull = getDateNow();
-let now = Now131();
+  const textarea = document.getElementById("textInput");
+  let now = Now131(); // ✅ panggil SEKALI
+  let tangal = getTangal();
 
-/* JUDUL ATAS */
-let useMass = document.getElementById("useMasslink").checked;
+  /* JUDUL ATAS */
+  let useMass = document.getElementById("useMasslink").checked;
 
-let judul =
-(useMass ? "" : "/masslink\n") +
-Now131() + "\n\n" +
-"🚀 𝙅𝙊𝙄𝙉 𝘾𝙃𝘼𝙉𝙉𝙀𝙇 𝙊𝙁𝘾 🚀\n" +
-"𝙏𝙀𝙇𝙀 t.me/+GiwJdsTtYP0xNzU1\n" +
-"𝙎𝙇 whatsapp.com/channel/0029Vb7aIVe2UPBK5qaTPP1V\n" +
-"𝙂𝘽 chat.whatsapp.com/IHd3froa7XF1jWkYGqS54w?mode=gi_t\n" +
-"\n" +
-"```⬇️ 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿 ⬇️\n\n"
+  let judul =
+  (useMass ? "" : "/masslink\n") +
+  now + "\n\n" + // ✅ pakai variable, bukan Now131() lagi
+  "🚀 𝙅𝙊𝙄𝙉 𝘾𝙃𝘼𝙉𝙉𝙀𝙇 𝙊𝙁𝘾 🚀\n" +
+  "𝙏𝙀𝙇𝙀 t.me/+GiwJdsTtYP0xNzU1\n" +
+  "𝙎𝙇 whatsapp.com/channel/0029Vb7aIVe2UPBK5qaTPP1V\n" +
+  "𝙂𝘽 chat.whatsapp.com/IHd3froa7XF1jWkYGqS54w?mode=gi_t\n" +
+  "\n" +
+  "```⬇️ 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿 ⬇️\n\n";
 
-/* TXT BAWAH */
-let tambahan =
-"\n\n" +
-"📌 𝘾𝘼𝙍𝘼 𝙈𝙀𝙇𝙀𝙒𝘼𝙏𝙄 𝙇𝙄𝙉𝙆\n" +
-"🎬 youtube.com/shorts/vyLfHIKgGCI?si=SN8ypUS-QTva1HJx\n" +
-\n" +
-getDateNow() + "\n\n" +
-"t.me/dezz_bot\n" +
-"\n" +
-"BUKAN ❤️‍🩹 PUNYA 🤝 @dezzreal1\n" +
-"\n" + // pake tanda >`A` biar bisa di salin otomatis
-"📌 𝙉𝙊𝙏𝙀:\n" +
-"📥 DOWNLOAD NOW\n" +
-"Download Sebelum link di hapus oleh Admin Developer.\n" +
-"𝙅𝙖𝙣𝙜𝙖𝙣 𝙇𝙪𝙥𝙖 𝘿𝙞 𝙨𝙝𝙖𝙧𝙚 𝙮𝙖,𝙗𝙖𝙣𝙩𝙪 𝙨𝙪𝙥𝙤𝙧𝙩 𝙣𝙮𝙖 𝙗𝙞𝙖𝙧 𝙨𝙖𝙮𝙖 𝙨𝙚𝙢𝙣𝙜𝙩 𝙪𝙥𝙙𝙖𝙩𝙚 𝙣𝙮𝙖.```\n"
+  /* TXT BAWAH */
+  let tambahan =
+  "\n\n" +
+  "📌 𝘾𝘼𝙍𝘼 𝙈𝙀𝙇𝙀𝙒𝘼𝙏𝙄 𝙇𝙄𝙉𝙆\n" +
+  "🎬 youtube.com/shorts/vyLfHIKgGCI?si=SN8ypUS-QTva1HJx\n\n" +
+  tangal + "\n\n" +
+  "𝐅𝐑𝐄𝐄 𝐀𝐋𝐋 𝐒𝐇𝐀𝐑𝐄\n"+
+  "t.me/dezz_bot\n" +
+  "\n" +
+  "📌 𝙉𝙊𝙏𝙀:\n" +
+  "📥 DOWNLOAD NOW\n" +
+  "Download Sebelum link di hapus oleh Admin Developer.\n" +
+  "𝙅𝙖𝙣𝙜𝙖𝙣 𝙇𝙪𝙥𝙖 𝘿𝙞 𝙨𝙝𝙖𝙧𝙚 𝙮𝙖,𝙗𝙖𝙣𝙩𝙪 𝙨𝙪𝙥𝙤𝙧𝙩 𝙣𝙮𝙖 𝙗𝙞𝙖𝙧 𝙨𝙖𝙮𝙖 𝙨𝙚𝙢𝙣𝙜𝙩 𝙪𝙥𝙙𝙖𝙩𝙚 𝙣𝙮𝙖.```\n";
 
-/* HASIL FINAL */
-let finalText = judul + cleanText(textarea.value) + tambahan;
+  /* HASIL FINAL */
+  let finalText = judul + cleanText(textarea.value) + tambahan;
 
-textarea.value = finalText;
+  textarea.value = finalText;
 
-textarea.select();
-textarea.setSelectionRange(0,99999);
+  textarea.select();
+  textarea.setSelectionRange(0,99999);
+  document.execCommand("copy");
 
-document.execCommand("copy");
-
-document.getElementById("status").innerText="Teks berhasil disalin!";
-
+  document.getElementById("status").innerText="Teks berhasil disalin!";
 }
 
 /* ===== COUNT TEXT ===== */
@@ -175,7 +270,7 @@ counter.innerText = "Karakter: " + chars + " | Baris: " + lines;
 
 }
 
-function getDateNow(){
+function getTangal(){
   let d = new Date();
 
   let tahun = d.getFullYear();
@@ -189,18 +284,50 @@ function getDateNow(){
 }
 
 
+let counterUpdate = parseInt(localStorage.getItem("counter")) || 0;
+
 function Now131(){
+  counterUpdate++;
+  localStorage.setItem("counter", counterUpdate);
+
   let d = new Date();
 
   let tahun = d.getFullYear();
   let bulan = String(d.getMonth()+1).padStart(2,'0');
   let tanggal = String(d.getDate()).padStart(2,'0');
-let jam = String(d.getHours()).padStart(2,'0');
+  let jam = String(d.getHours()).padStart(2,'0');
   let menit = String(d.getMinutes()).padStart(2,'0');
-  
-  return `# NEW UPDATE: ${jam}:${menit}  📅 ${tanggal}/${bulan}/${tahun}`;
+
+  return `#${counterUpdate} NEW UPDATE: ${jam}:${menit} 📅 ${tanggal}/${bulan}/${tahun}`;
 }
 
+function resetCounter(){
+  if(confirm("Yakin mau reset counter?")){
+    counterUpdate = 0;
+    localStorage.setItem("counter", 0);
+    document.getElementById("status").innerText = "Counter direset!";
+  }
+}
+
+document.querySelectorAll("button").forEach(btn => {
+  btn.addEventListener("click", function(e){
+
+    const circle = document.createElement("span");
+    const diameter = Math.max(this.clientWidth, this.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = diameter + "px";
+    circle.style.left = e.clientX - this.offsetLeft - radius + "px";
+    circle.style.top = e.clientY - this.offsetTop - radius + "px";
+
+    circle.classList.add("ripple");
+
+    const ripple = this.getElementsByClassName("ripple")[0];
+    if(ripple) ripple.remove();
+
+    this.appendChild(circle);
+  });
+});
 </script>
 
 </body>
