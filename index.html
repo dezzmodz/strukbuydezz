@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Text Cleaner Pro</title>
+<title>Text Cleaner Pro - DezzXOFM</title>
 
 <style>
 *{
@@ -14,26 +14,50 @@
 
 body{
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #020617, #0f172a);
-  color: white;
+  background: linear-gradient(135deg, black , black);
+  color: white ;
   padding: 10px;
 }
 
 /* CARD */
 .container{
-  width: 100%;
-  max-width: 850px;
-  margin: auto;
-  padding: 15px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
+  width:100%;
+  max-width:850px;
+  margin:auto;
+
+  padding:20px;
+
+  border-radius:24px;
+
+  background:rgba(255,255,255,0.05);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+  0 8px 32px rgba(0,0,0,0.35),
+  inset 0 1px 0 rgba(255,255,255,0.05);
+
+  transition:.3s ease;
+}
+
+/* HOVER */
+.container:hover{
+  transform:translateY(-3px);
+
+  border:1px solid rgba(255,255,255,0.12);
+
+  box-shadow:
+  0 12px 40px rgba(0,0,0,0.45),
+  0 0 40px rgba(59,130,246,0.08);
 }
 
 /* TITLE */
 h2{
   text-align: center;
-  color: #22c55e;
+  color: yellow;
   margin-bottom: 15px;
 }
 
@@ -48,8 +72,13 @@ textarea{
   border-radius: 12px;
   border: none;
 
-  background: rgba(0,0,0,0.6);
-  color: #e2e8f0;
+  background:rgba(15,23,42,0.75);
+
+backdrop-filter:blur(14px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+color:cyan;
 
   outline: none;
   resize: none;
@@ -157,19 +186,412 @@ button:hover{
   textarea{height:45vh;font-size:13px;}
   button{font-size:12px;padding:8px;}
 }
+
+/* ===== SYSTEM INFO PREMIUM ===== */
+
+.system-info{
+  position:fixed;
+
+  bottom:90px;
+  right:15px;
+
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+
+  z-index:9999;
+}
+
+/* ===== BOX ===== */
+
+.fps-box,
+.battery-box{
+
+  min-width:85px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+
+  padding:10px 14px;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,0.05);
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  font-size:12px;
+  font-weight:700;
+
+  letter-spacing:.5px;
+
+  overflow:hidden;
+  position:relative;
+
+  box-shadow:
+  0 8px 24px rgba(0,0,0,.35),
+  inset 0 1px 0 rgba(255,255,255,.04);
+
+  animation:floatInfo 4s ease-in-out infinite;
+}
+
+/* ===== FPS ===== */
+
+.fps-box{
+  color:#22c55e;
+}
+
+/* ===== BATTERY ===== */
+
+.battery-box{
+  color:#facc15;
+}
+
+/* ===== SHINE EFFECT ===== */
+
+.fps-box::before,
+.battery-box::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:-120%;
+
+  width:100%;
+  height:100%;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.08),
+    transparent
+  );
+
+  animation:shine 4s linear infinite;
+}
+
+/* ===== GLOW ===== */
+
+.fps-box::after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  border-radius:inherit;
+
+  box-shadow:
+  0 0 25px rgba(34,197,94,.12);
+
+  pointer-events:none;
+}
+
+.battery-box::after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  border-radius:inherit;
+
+  box-shadow:
+  0 0 25px rgba(250,204,21,.10);
+
+  pointer-events:none;
+}
+
+/* ===== FLOAT ===== */
+
+@keyframes floatInfo{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-4px);
+  }
+}
+
+/* ===== SHINE ===== */
+
+@keyframes shine{
+
+  0%{
+    left:-120%;
+  }
+
+  100%{
+    left:120%;
+  }
+}
+
+/* ===== GRID ===== */
+
+.grid-bg{
+
+  position:fixed;
+  inset:0;
+
+  background-image:
+  linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+  background-size:35px 35px;
+
+  z-index:-5;
+
+  mask-image:
+  radial-gradient(circle at center,
+  black 45%,
+  transparent 100%);
+}
+
+/* ===== TOP LIGHT ===== */
+
+.top-light{
+
+  position:fixed;
+
+  top:-220px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:700px;
+  height:400px;
+
+  background:
+  radial-gradient(circle,
+  rgba(59,130,246,.20),
+  transparent 70%);
+
+  filter:blur(90px);
+
+  z-index:-4;
+}
+
+/* ===== CURSOR GLOW ===== */
+
+#cursorGlow{
+
+  position:fixed;
+
+  width:220px;
+  height:220px;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(circle,
+  rgba(59,130,246,.16),
+  transparent 70%);
+
+  pointer-events:none;
+
+  transform:translate(-50%,-50%);
+
+  z-index:-1;
+
+  transition:
+  top .08s linear,
+  left .08s linear;
+}
+
+/* ===== LIVE STATUS ===== */
+
+.live-status{
+
+  position:fixed;
+
+  bottom:15px;
+  left:15px;
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  padding:10px 14px;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,.05);
+
+  backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  color:#22c55e;
+
+  font-size:11px;
+  font-weight:700;
+
+  z-index:9999;
+
+  box-shadow:
+  0 8px 30px rgba(0,0,0,.35);
+}
+
+/* DOT */
+
+.live-status span{
+
+  width:8px;
+  height:8px;
+
+  min-width:8px;
+  min-height:8px;
+
+  border-radius:50%;
+
+  background:#22c55e;
+
+  box-shadow:0 0 12px #22c55e;
+
+  animation:blinkDot 1.5s infinite;
+}
+
+/* ===== CLOCK ===== */
+
+.live-clock{
+
+  position:fixed;
+
+  bottom:15px;
+  right:15px;
+
+  padding:10px 14px;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,.05);
+
+  backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  color:#38bdf8;
+
+  font-size:11px;
+  font-weight:700;
+
+  z-index:9999;
+
+  box-shadow:
+  0 8px 30px rgba(0,0,0,.35);
+}
+
+/* ===== PREMIUM CONTAINER ===== */
+
+.container{
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+/* GLOW BORDER */
+
+.container::before{
+
+  content:"";
+
+  position:absolute;
+  inset:-1px;
+
+  border-radius:inherit;
+
+  padding:1px;
+
+  background:
+  linear-gradient(
+    135deg,
+    rgba(255,255,255,.10),
+    rgba(59,130,246,.18),
+    rgba(139,92,246,.18)
+  );
+
+  -webkit-mask:
+  linear-gradient(#fff 0 0) content-box,
+  linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite:xor;
+
+  pointer-events:none;
+}
+
+/* ===== SCANLINE ===== */
+
+body::after{
+
+  content:"";
+
+  position:fixed;
+  inset:0;
+
+  background:
+  repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.015),
+    rgba(255,255,255,.015) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+
+  pointer-events:none;
+
+  z-index:99999;
+}
+
 </style>
 </head>
 
+<!-- GRID BACKGROUND -->
+<div class="grid-bg"></div>
+
+<!-- TOP LIGHT -->
+<div class="top-light"></div>
+
+<!-- CURSOR GLOW -->
+<div id="cursorGlow"></div>
+
+<!-- ONLINE STATUS -->
+<div class="live-status">
+  <span></span>
+  AI SYSTEM ONLINE
+</div>
+
+<!-- CLOCK -->
+<div class="live-clock" id="clock">
+  00:00:00
+</div>
+
 <body>
+<!-- SYSTEM INFO -->
+<div class="system-info">
+
+  <div class="fps-box">
+    <span id="fps">60</span> FPS
+  </div>
+
+  <div class="battery-box">
+    🔋 <span id="battery">100</span>%
+  </div>
+
+</div>
 
 <div class="container">
 
-  <h2>🚀 Text Cleaner Pro</h2>
+  <h2>🚀 Text Cleaner Pro-DezzXOFM</h2>
 
-  <textarea id="textInput" placeholder="🚀 𝙅𝙊𝙄𝙉 𝘾𝙃𝘼𝙉𝙉𝙀𝙇 𝙊𝙁𝘾 🚀
-𝙏𝙀𝙇𝙀 t.me/+GiwJdsTtYP0xNzU1
-𝙎𝙇 whatsapp.com/channel/0029Vb7aIVe2UPBK5qaTPP1V
-𝙂𝘽 chat.whatsapp.com/IHd3froa7XF1jWkYGqS54w?mode=gi_t"></textarea>
+  <textarea id="textInput" placeholder="DezzXOFM"></textarea>
 
   <div class="info" id="counter">
     Karakter: 0 | Baris: 0
@@ -320,7 +742,7 @@ function Now131(){
   let jam = String(d.getHours()).padStart(2,'0');
   let menit = String(d.getMinutes()).padStart(2,'0');
 
-  return `#${counterUpdate} NEW UPDATE: ${jam}:${menit}`;
+  return `#${counterUpdate} 𝙉𝙀𝙒 𝙐𝙋𝘿𝘼𝙏𝙀: 𝐃𝐚𝐲 #${tanggal} | ⏰${jam}.${menit} WIB`;
 }
 
 function resetCounter(){
@@ -350,6 +772,128 @@ document.querySelectorAll("button").forEach(btn => {
     this.appendChild(circle);
   });
 });
+
+/* ===== FPS COUNTER ===== */
+
+let lastFrame = performance.now();
+let frames = 0;
+
+function updateFPS(){
+
+  frames++;
+
+  const now = performance.now();
+
+  if(now >= lastFrame + 1000){
+
+    document.getElementById("fps").innerText = frames;
+
+    frames = 0;
+    lastFrame = now;
+  }
+
+  requestAnimationFrame(updateFPS);
+}
+
+updateFPS();
+
+/* ===== BATTERY API ===== */
+
+if(navigator.getBattery){
+
+  navigator.getBattery().then(function(battery){
+
+    function updateBattery(){
+
+      document.getElementById("battery").innerText =
+      Math.floor(battery.level * 100);
+
+    }
+
+    updateBattery();
+
+    battery.addEventListener("levelchange", updateBattery);
+
+  });
+
+}else{
+
+  document.getElementById("battery").innerText = "--";
+
+}
+
+function updateBattery(){
+
+  let level = Math.floor(battery.level * 100);
+
+  document.getElementById("battery").innerText = level;
+
+  const batteryBox =
+  document.querySelector(".battery-box");
+
+  /* RESET */
+  batteryBox.style.color = "";
+  batteryBox.style.boxShadow = "";
+
+  /* LOW */
+  if(level <= 20){
+
+    batteryBox.style.color = "#ef4444";
+
+    batteryBox.style.boxShadow =
+    "0 0 25px rgba(239,68,68,.25)";
+
+  }
+
+  /* MEDIUM */
+  else if(level <= 70){
+
+    batteryBox.style.color = "#facc15";
+
+    batteryBox.style.boxShadow =
+    "0 0 25px rgba(250,204,21,.18)";
+  }
+
+  /* FULL */
+  else{
+
+    batteryBox.style.color = "#22c55e";
+
+    batteryBox.style.boxShadow =
+    "0 0 25px rgba(34,197,94,.20)";
+  }
+}
+
+/* ===== LIVE CLOCK ===== */
+
+function updateClock(){
+
+  const now = new Date();
+
+  let h = String(now.getHours()).padStart(2,'0');
+  let m = String(now.getMinutes()).padStart(2,'0');
+  let s = String(now.getSeconds()).padStart(2,'0');
+
+  document.getElementById("clock").innerText =
+  `${h}:${m}:${s}`;
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+/* ===== CURSOR GLOW ===== */
+
+const glow =
+document.getElementById("cursorGlow");
+
+document.addEventListener("mousemove",(e)=>{
+
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+
+});
+
 </script>
 
 </body>
